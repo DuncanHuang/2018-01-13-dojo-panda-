@@ -37,16 +37,12 @@ class CardSuit
             'element' => [],
         ];
         $uniqueNumbers = $this->uniqueNumbers();
+        $suitType = '';
         if (count($uniqueNumbers) == 5) {
-            $isStraight = $this->isStraight();
-            $isFlush    = $this->isFlush();
-
-
-            if ($isStraight == true && $isFlush == true) {
-                $result['name']    = 'Straight Flush';
-                $result['element'] = [$this->getElements($uniqueNumbers)];
-            }
+            $suitType = $this->isFlushStraight();
         }
+        $result['name'] = $suitType;
+        $result['element'] = [$this->getElements($uniqueNumbers)];
 
         return $result;
     }
@@ -128,5 +124,20 @@ class CardSuit
             return 'A';
         }
         return $maxNumber;
+    }
+
+    /**
+     * @return string
+     */
+    private function isFlushStraight(): string
+    {
+        $isStraight = $this->isStraight();
+        $isFlush    = $this->isFlush();
+
+        if ($isStraight == true && $isFlush == true) {
+            $suitType = 'Straight Flush';
+        }
+
+        return $suitType;
     }
 }

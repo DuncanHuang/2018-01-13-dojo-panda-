@@ -59,4 +59,34 @@ class SuitTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * 同花順 A, 2, 3, 4, 5
+     */
+    public function test_StraightFlushA2345()
+    {
+        $cardSuit = new CardSuit('SA,S2,S3,S4,S5');
+
+        $expected = [
+            'name'    => 'Straight Flush',
+            'element' => ['5'],
+        ];
+        $actual   = $cardSuit->getResult();
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * 同花順 K, A, 2, 3, 4
+     */
+//    public function test_StraightFlushKA234()
+//    {
+//        $cardSuit = new CardSuit('SK,SA,S2,S3,S4');
+//
+//        $expected = [
+//            'name'    => 'High Card',
+//            'element' => ['K'],
+//        ];
+//        $actual   = $cardSuit->getResult();
+//        $this->assertEquals($expected, $actual);
+//    }
+
 }
