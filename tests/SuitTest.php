@@ -28,4 +28,20 @@ class SuitTest extends TestCase
         $actual   = $cardSuit->getResult();
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * 同花順
+     */
+    public function test_StraightFlushJQKA2()
+    {
+        $cardSuit = new CardSuit('S7,S8,S9,S10,SJ');
+
+        $expected = [
+            'name'    => 'Straight Flush',
+            'element' => [11],
+        ];
+        $actual   = $cardSuit->getResult();
+        $this->assertEquals($expected, $actual);
+    }
+
 }

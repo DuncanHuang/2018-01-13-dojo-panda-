@@ -22,7 +22,7 @@ class CardSuit
         $cardList       = explode(',', $cardString);
         $this->cardList = array_map(function ($card) {
             return $card = [
-                substr($card, 1),
+                $this->getNumber(substr($card, 1)),
                 substr($card, 0, 1),
             ];
         }, $cardList);
@@ -89,5 +89,20 @@ class CardSuit
         }
 
         return false;
+    }
+
+    private function getNumber($substr)
+    {
+        $suit = [
+            'J' => '11',
+            'Q' => '12',
+            'K' => '13',
+            'A' => '1',
+        ];
+
+        if (array_key_exists($substr, $suit)) {
+            return $suit[$substr];
+        }
+        return $substr;
     }
 }
