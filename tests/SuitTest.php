@@ -44,4 +44,19 @@ class SuitTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * 同花順 10,11,12,13,A
+     */
+    public function test_StraightFlush10JQKA()
+    {
+        $cardSuit = new CardSuit('S10,SJ,SQ,SK,SA');
+
+        $expected = [
+            'name'    => 'Straight Flush',
+            'element' => ['A'],
+        ];
+        $actual   = $cardSuit->getResult();
+        $this->assertEquals($expected, $actual);
+    }
+
 }

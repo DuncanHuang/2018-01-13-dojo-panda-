@@ -27,22 +27,24 @@ class CardSuit
             ];
         }, $cardList);
         $this->suitSort();
+        $this->exchangeNumberA();
     }
 
     public function getResult()
     {
-        $result = [
-            'name' => '',
-            'element' => []
+        $result        = [
+            'name'    => '',
+            'element' => [],
         ];
         $uniqueNumbers = $this->uniqueNumbers();
         if (count($uniqueNumbers) == 5) {
             $isStraight = $this->isStraight();
             $isFlush    = $this->isFlush();
 
+
             if ($isStraight == true && $isFlush == true) {
-                $result['name'] = 'Straight Flush';
-                $result['element'] = [max(array_keys($uniqueNumbers))];
+                $result['name']    = 'Straight Flush';
+                $result['element'] = [$this->getElements($uniqueNumbers)];
             }
         }
 
@@ -52,6 +54,7 @@ class CardSuit
     private function suitSort(): void
     {
         usort($this->cardList, function ($a, $b) {
+            
             if ($a[0] == $b[0]) {
                 return 0;
             }
@@ -67,6 +70,7 @@ class CardSuit
 
     private function isStraight()
     {
+
         $uniqueT = (($this->cardList[0][0] + $this->cardList[4][0]) * 5) / 2;
 
         $uniqueSum = 0;
@@ -103,6 +107,26 @@ class CardSuit
         if (array_key_exists($substr, $suit)) {
             return $suit[$substr];
         }
+
         return $substr;
+    }
+
+    private function exchangeNumberA()
+    {
+
+        if($this->cardList[0][0] == 1 && $this->cardList[4][0] == 13){
+            $this->cardList[0][0] = 14;
+        }
+        $this->suitSort();
+    }
+
+    private function getElements($uniqueNumbers)
+    {
+        $maxNumber = max(array_keys($uniqueNumbers));
+
+        if($maxNumber == 14){
+            return 'A';
+        }
+        return $maxNumber;
     }
 }
