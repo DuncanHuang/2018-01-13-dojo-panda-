@@ -32,7 +32,7 @@ class SuitTest extends TestCase
     /**
      * 同花順
      */
-    public function test_StraightFlushJQKA2()
+    public function test_StraightFlush78910J()
     {
         $cardSuit = new CardSuit('S7,S8,S9,S10,SJ');
 
