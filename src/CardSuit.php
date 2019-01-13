@@ -134,8 +134,11 @@ class CardSuit
         $isStraight = $this->isStraight();
         $isFlush    = $this->isFlush();
 
+        $suitType = '';
         if ($isStraight == true && $isFlush == true) {
             $suitType = 'Straight Flush';
+        } else if ($isStraight) {
+            $suitType = 'Straight';
         }
 
         return $suitType;
