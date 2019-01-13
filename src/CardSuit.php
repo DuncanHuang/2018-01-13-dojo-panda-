@@ -39,7 +39,7 @@ class CardSuit
         $uniqueNumbers = $this->uniqueNumbers();
         $suitType = '';
         if (count($uniqueNumbers) == 5) {
-            $suitType = $this->isFlushStraight();
+            $suitType = $this->is5uniqueNumbers();
         }
         $result['name'] = $suitType;
         $result['element'] = [$this->getElements($uniqueNumbers)];
@@ -129,7 +129,7 @@ class CardSuit
     /**
      * @return string
      */
-    private function isFlushStraight(): string
+    private function is5uniqueNumbers(): string
     {
         $isStraight = $this->isStraight();
         $isFlush    = $this->isFlush();
