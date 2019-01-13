@@ -13,6 +13,10 @@ use PHPUnit\Framework\TestCase;
 
 class SuitTest extends TestCase
 {
+
+    /**
+     * 同花順
+     */
     public function test_StraightFlush()
     {
         $cardSuit = new CardSuit('S5,S6,S4,S7,S8');
